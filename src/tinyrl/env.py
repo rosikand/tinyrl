@@ -12,14 +12,20 @@ class Environment(ABC):
         _get_obs()       -> current observation as numpy array
 
     Subclasses must set in __init__:
-        state_dim   (int): dimensionality of the observation
-        n_actions   (int): number of discrete actions
-        max_steps   (int): episode step limit
+        state_dim    (int): dimensionality of the observation
+        max_steps    (int): episode step limit
+
+    For discrete action spaces, set:
+        n_actions    (int): number of discrete actions
+
+    For continuous action spaces, set:
+        action_dim   (int): dimensionality of the action vector
     """
 
     state_dim: int
-    n_actions: int
     max_steps: int
+    n_actions: int | None = None
+    action_dim: int | None = None
 
     @abstractmethod
     def reset(self) -> np.ndarray:
@@ -27,7 +33,7 @@ class Environment(ABC):
         ...
 
     @abstractmethod
-    def step(self, action: int) -> tuple[np.ndarray, float, bool]:
+    def step(self, action: int | np.ndarray) -> tuple[np.ndarray, float, bool]:
         """
         Take an action in the environment.
 
@@ -44,6 +50,6 @@ class Environment(ABC):
         ...
 
     @abstractmethod
-    def render(self, action: int | None = None, step_num: int = 0):
+    def render(self, action: int | np.ndarray | None = None, step_num: int = 0):
         """Display the current state of the environment."""
         ...

@@ -18,7 +18,7 @@ class PolicyOutput:
             # with training info
             return PolicyOutput(action=2, logprob=-0.3, entropy=1.2)
     """
-    action: int
+    action: int | np.ndarray
     logprob: float | None = None
     entropy: float | None = None
 
@@ -27,7 +27,7 @@ class PolicyOutput:
 class Step:
     """A single environment transition."""
     obs: np.ndarray
-    action: int
+    action: int | np.ndarray
     reward: float
     next_obs: np.ndarray
     done: bool
@@ -58,8 +58,8 @@ class Trajectory:
 
     @property
     def actions(self) -> np.ndarray:
-        """Batched actions, shape (length,)."""
-        return np.array([s.action for s in self.steps])
+        """Batched actions. Shape (length,) for discrete, (length, action_dim) for continuous."""
+        return np.stack([s.action for s in self.steps])
 
     @property
     def rewards(self) -> np.ndarray:
