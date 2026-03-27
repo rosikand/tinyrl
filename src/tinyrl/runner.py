@@ -2,7 +2,7 @@ import time
 import numpy as np
 from .env import Environment
 from .monitor import TrainingMonitor
-from .types import PolicyOutput, Step, Trajectory
+from .types import PolicyOutput, Step, Trajectory, EpisodeResult
 
 
 class Runner:
@@ -33,9 +33,7 @@ class Runner:
             return_trajectory: if True, returns the full trajectory
 
         Returns:
-            (total_reward, steps) by default.
-            (total_reward, steps, trajectory) if return_trajectory=True,
-            where trajectory is a Trajectory dataclass.
+            EpisodeResult with reward, steps, and optionally trajectory.
         """
         obs = self.env.reset()
         if visualize:
@@ -83,9 +81,8 @@ class Runner:
         if log:
             self.monitor.log(total_reward, steps, mean_entropy)
 
-        if return_trajectory:
-            return total_reward, steps, Trajectory(trajectory, total_reward, steps)
-        return total_reward, steps
+        traj = Trajectory(trajectory, total_reward, steps) if return_trajectory else None
+        return EpisodeResult(reward=total_reward, steps=steps, trajectory=traj)
 
     def plot(self):
         self.monitor.plot()

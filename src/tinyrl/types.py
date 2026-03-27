@@ -79,3 +79,11 @@ class Trajectory:
         if self.steps[0].entropy is None:
             return None
         return np.array([s.entropy for s in self.steps])
+
+
+@dataclass
+class EpisodeResult:
+    """Return type for Runner.run_episode()."""
+    reward: float
+    steps: int
+    trajectory: Trajectory | None = None
