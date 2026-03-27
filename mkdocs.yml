@@ -15,7 +15,10 @@ nav:
   - Getting Started: getting-started.md
   - API Reference:
     - Environment: api/environment.md
+    - Policy: api/policy.md
+    - Types: api/types.md
     - GridWorld: api/gridworld.md
+    - Algorithms: api/algorithms.md
     - Runner: api/runner.md
     - TrainingMonitor: api/monitor.md
   - Adding Environments: adding-environments.md

@@ -18,7 +18,7 @@ monitor = TrainingMonitor(window=50)
 
 ## Methods
 
-### `log(reward, length, entropy)`
+### `log(reward, length, entropy=None)`
 
 Record one episode's statistics.
 
@@ -26,15 +26,15 @@ Record one episode's statistics.
 
 - `reward` — total episode reward
 - `length` — number of steps in the episode
-- `entropy` — mean policy entropy over the episode
+- `entropy` — mean policy entropy over the episode (optional)
 
 ### `plot()`
 
-Display three training curves side by side:
+Display training curves side by side:
 
-1. **Episode Reward** — with a reference line at the optimal reward
-2. **Episode Length** — with a reference line at the optimal path length
-3. **Policy Entropy** — with a reference line at maximum entropy (uniform policy)
+1. **Episode Reward**
+2. **Episode Length**
+3. **Policy Entropy** — only shown if entropy data was logged
 
 Each plot shows the raw data (transparent) and a rolling average (solid line).
 
@@ -44,7 +44,7 @@ Each plot shows the raw data (transparent) and a rolling average (solid line).
 |-----------|------|-------------|
 | `rewards` | `list[float]` | All logged episode rewards |
 | `lengths` | `list[int]` | All logged episode lengths |
-| `entropies` | `list[float]` | All logged mean entropies |
+| `entropies` | `list[float]` | Logged mean entropies (only for episodes that provided entropy) |
 
 ## Standalone usage
 
@@ -55,7 +55,7 @@ monitor = TrainingMonitor()
 
 for episode in range(500):
     # ... your training loop ...
-    monitor.log(total_reward, steps, entropy)
+    monitor.log(total_reward, steps, entropy)  # entropy is optional
 
 monitor.plot()
 ```

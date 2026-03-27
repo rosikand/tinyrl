@@ -7,8 +7,11 @@
 | Attribute | Type | Description |
 |-----------|------|-------------|
 | `state_dim` | `int` | Dimensionality of the observation vector |
-| `n_actions` | `int` | Number of discrete actions |
+| `n_actions` | `int \| None` | Number of discrete actions (for discrete envs) |
+| `action_dim` | `int \| None` | Dimensionality of the action vector (for continuous envs) |
 | `max_steps` | `int` | Maximum steps per episode |
+
+Set `n_actions` for discrete action spaces, `action_dim` for continuous.
 
 ## Abstract methods
 
@@ -22,13 +25,13 @@ Reset the environment to its initial state.
 obs = env.reset()
 ```
 
-### `step(action: int) -> tuple[np.ndarray, float, bool]`
+### `step(action: int | np.ndarray) -> tuple[np.ndarray, float, bool]`
 
 Take one step in the environment.
 
 **Args:**
 
-- `action` — integer index of the action to take
+- `action` — action index (int, discrete) or action vector (np.ndarray, continuous)
 
 **Returns:** a tuple of `(observation, reward, done)`
 
@@ -44,7 +47,7 @@ obs, reward, done = env.step(action)
 
 Return the current observation. Called internally by `reset()` and `step()`.
 
-### `render(action: int | None = None, step_num: int = 0)`
+### `render(action=None, step_num=0)`
 
 Display the current state of the environment.
 

@@ -20,34 +20,35 @@ runner = Runner(env)
 
 ## Methods
 
-### `run_episode(policy_fn, visualize=False, delay=0.1)`
+### `run_episode(policy_fn, visualize=False, delay=0.1, log=True, return_trajectory=False)`
 
 Roll out a single episode.
 
 **Args:**
 
 - `policy_fn` — a callable that takes an observation and returns either:
-    - `action` (int) — the action to take
-    - `(action, entropy)` (tuple) — action plus the entropy of the policy distribution, for tracking
+    - `int` or `np.ndarray` — the action to take
+    - `PolicyOutput` — action plus optional logprob and entropy
 - `visualize` — if `True`, calls `env.render()` at each step
 - `delay` — seconds between frames when visualizing
+- `log` — if `True`, logs stats to the monitor. Set `False` for eval runs.
+- `return_trajectory` — if `True`, populates `result.trajectory`
 
-**Returns:** `(total_reward, steps)`
+**Returns:** `EpisodeResult`
 
 ```python
-# simple policy
-reward, steps = runner.run_episode(lambda obs: 1)  # always go right
+# basic
+result = runner.run_episode(policy)
+result.reward       # total reward
+result.steps        # number of steps
 
-# policy that reports entropy
-def my_policy(obs):
-    action = model(obs)
-    entropy = compute_entropy(model)
-    return action, entropy
+# with trajectory
+result = runner.run_episode(policy, return_trajectory=True)
+result.trajectory   # Trajectory object
 
-reward, steps = runner.run_episode(my_policy)
+# eval (no logging)
+result = runner.run_episode(policy, log=False)
 ```
-
-If the policy function doesn't return entropy, the runner assumes a uniform distribution (`ln(n_actions)`).
 
 ### `plot()`
 

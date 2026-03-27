@@ -12,7 +12,8 @@ from tinyrl import Environment
 class MyEnv(Environment):
     def __init__(self):
         self.state_dim = 4        # observation dimensionality
-        self.n_actions = 2        # number of discrete actions
+        self.n_actions = 2        # for discrete action spaces
+        # self.action_dim = 3     # for continuous action spaces
         self.max_steps = 200      # episode step limit
         # ... your state variables ...
 
@@ -22,7 +23,7 @@ class MyEnv(Environment):
         # ... reset your state ...
         return self._get_obs()
 
-    def step(self, action: int) -> tuple[np.ndarray, float, bool]:
+    def step(self, action) -> tuple[np.ndarray, float, bool]:
         """Take action, return (observation, reward, done)."""
         self.steps += 1
         # ... apply action, compute reward ...
@@ -41,11 +42,12 @@ class MyEnv(Environment):
 
 ## Checklist
 
-1. Set `state_dim`, `n_actions`, and `max_steps` in `__init__`
-2. `reset()` returns the initial observation and resets all state
-3. `step()` returns `(obs, reward, done)` — make sure `done=True` when the episode should end
-4. `_get_obs()` returns a numpy array with shape `(state_dim,)`
-5. `render()` displays something useful for debugging
+1. Set `state_dim` and `max_steps` in `__init__`
+2. Set `n_actions` (discrete) or `action_dim` (continuous)
+3. `reset()` returns the initial observation and resets all state
+4. `step()` returns `(obs, reward, done)` — make sure `done=True` when the episode should end
+5. `_get_obs()` returns a numpy array with shape `(state_dim,)`
+6. `render()` displays something useful for debugging
 
 ## Using with Runner
 
@@ -56,6 +58,7 @@ from tinyrl import Runner
 
 env = MyEnv()
 runner = Runner(env)
-runner.run_episode(my_policy, visualize=True)
+
+result = runner.run_episode(my_policy, visualize=True)
 runner.plot()
 ```

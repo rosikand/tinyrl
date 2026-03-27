@@ -1,6 +1,6 @@
 import numpy as np
 from IPython.display import clear_output
-from .env import Environment
+from ..core import Environment
 
 
 class GridWorld(Environment):

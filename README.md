@@ -1,10 +1,10 @@
 # `tinyrl`
 
-> A minimal reinforcement learning toolkit built from scratch. Provides simple RL environments and training utilities for learning and experimenting with RL algorithms. 
+> A minimal reinforcement learning toolkit built from scratch. Provides simple RL environments and training utilities for learning and experimenting with RL algorithms.
 
-See the docs [here](https://rosikand.github.io/tinyrl/) to get started. 
+See the docs [here](https://rosikand.github.io/tinyrl/) to get started.
 
-*Built with the help of claude code and a little bit of "taste"* 
+*Built with the help of claude code and a little bit of "taste"*
 
 ## Install
 
@@ -15,20 +15,31 @@ pip install git+https://github.com/rosikand/tinyrl.git
 ## Usage
 
 ```python
-from tinyrl import GridWorld, Runner
-import numpy as np
+from tinyrl import GridWorld, Runner, RandomPolicy
 
 env = GridWorld()
 runner = Runner(env)
+policy = RandomPolicy(n_actions=env.n_actions)
 
-# random policy
-runner.run_episode(lambda obs: np.random.randint(env.n_actions))
+# run an episode
+result = runner.run_episode(policy)
+print(result.reward, result.steps)
 
-# visualize an episode
-runner.run_episode(lambda obs: np.random.randint(env.n_actions), visualize=True)
+# with trajectory
+result = runner.run_episode(policy, return_trajectory=True)
+print(result.trajectory.obs.shape)
 
 # plot training stats
 runner.plot()
+```
+
+## Package structure
+
+```
+tinyrl/
+  core/          # Environment, Policy, Runner, TrainingMonitor, types
+  envs/          # GridWorld, ...
+  algorithms/    # RandomPolicy, ...
 ```
 
 ## Environments
@@ -45,11 +56,25 @@ from tinyrl import Environment
 class MyEnv(Environment):
     def __init__(self):
         self.state_dim = ...
-        self.n_actions = ...
+        self.n_actions = ...   # for discrete
+        self.action_dim = ...  # for continuous
         self.max_steps = ...
 
     def reset(self): ...
     def step(self, action): ...
     def _get_obs(self): ...
     def render(self, action=None, step_num=0): ...
+```
+
+## Adding a new policy
+
+Subclass `Policy` and implement `__call__`:
+
+```python
+from tinyrl import Policy, PolicyOutput
+
+class MyPolicy(Policy):
+    def __call__(self, obs):
+        action = ...
+        return PolicyOutput(action=action, logprob=-0.5, entropy=1.2)
 ```
