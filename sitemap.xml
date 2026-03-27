@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://rosikand.github.io/tinyrl/</loc>
+         <lastmod>2026-03-27</lastmod>
+    </url>
+    <url>
+         <loc>https://rosikand.github.io/tinyrl/adding-environments/</loc>
+         <lastmod>2026-03-27</lastmod>
+    </url>
+    <url>
+         <loc>https://rosikand.github.io/tinyrl/getting-started/</loc>
+         <lastmod>2026-03-27</lastmod>
+    </url>
+    <url>
+         <loc>https://rosikand.github.io/tinyrl/api/environment/</loc>
+         <lastmod>2026-03-27</lastmod>
+    </url>
+    <url>
+         <loc>https://rosikand.github.io/tinyrl/api/gridworld/</loc>
+         <lastmod>2026-03-27</lastmod>
+    </url>
+    <url>
+         <loc>https://rosikand.github.io/tinyrl/api/monitor/</loc>
+         <lastmod>2026-03-27</lastmod>
+    </url>
+    <url>
+         <loc>https://rosikand.github.io/tinyrl/api/runner/</loc>
+         <lastmod>2026-03-27</lastmod>
+    </url>
+</urlset>
