@@ -1,0 +1,26 @@
+site_name: tinyrl
+site_description: A minimal RL toolkit built from scratch
+site_url: https://rosikand.github.io/tinyrl
+repo_url: https://github.com/rosikand/tinyrl
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: teal
+    accent: teal
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - API Reference:
+    - Environment: api/environment.md
+    - GridWorld: api/gridworld.md
+    - Runner: api/runner.md
+    - TrainingMonitor: api/monitor.md
+  - Adding Environments: adding-environments.md
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - admonition

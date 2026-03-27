@@ -19,6 +19,10 @@ notebooks = [
     "ipython",
     "torch",
 ]
+docs = [
+    "mkdocs",
+    "mkdocs-material",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
