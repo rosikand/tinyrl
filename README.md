@@ -4,7 +4,7 @@ A minimal reinforcement learning toolkit built from scratch. Provides simple RL 
 
 See the docs at https://rosikand.github.io/tinyrl/. 
 
-*Built with the help of claude code and, may I say, "taste"* 
+*Built with the help of claude code and a little bit of "taste"* 
 
 ## Install
 
