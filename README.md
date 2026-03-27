@@ -5,7 +5,7 @@ A minimal reinforcement learning toolkit built from scratch. Provides simple RL 
 ## Install
 
 ```bash
-pip install git+https://github.com/<your-username>/tinyrl.git
+pip install git+https://github.com/rosikand/tinyrl.git
 ```
 
 ## Usage
