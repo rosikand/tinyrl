@@ -1,6 +1,6 @@
 # tinyrl
 
-A minimal reinforcement learning toolkit built from scratch. Provides simple RL environments and training utilities for learning and experimenting with RL algorithms. 
+> A minimal reinforcement learning toolkit built from scratch. Provides simple RL environments and training utilities for learning and experimenting with RL algorithms. 
 
 See the docs [here](https://rosikand.github.io/tinyrl/) to get started. 
 
