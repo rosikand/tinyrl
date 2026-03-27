@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://rosikand.github.io/tinyrl/api/monitor/">
+        <link rel="canonical" href="https://rosikand.github.io/tinyrl/api/algorithms/">
       
       
-        <link rel="prev" href="../runner/">
+        <link rel="prev" href="../gridworld/">
       
       
-        <link rel="next" href="../../adding-environments/">
+        <link rel="next" href="../runner/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>TrainingMonitor - tinyrl</title>
+        <title>Algorithms - tinyrl</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#trainingmonitor" class="md-skip">
+        <a href="#algorithms" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TrainingMonitor
+              Algorithms
             
           </span>
         </div>
@@ -444,10 +444,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../algorithms/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithms
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -463,6 +490,71 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#randompolicy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RandomPolicy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RandomPolicy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constructor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#randompolicyn_actions-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RandomPolicy(n_actions: int)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -500,37 +592,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TrainingMonitor
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../monitor/" class="md-nav__link">
         
   
   
@@ -546,115 +611,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#constructor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Constructor
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#trainingmonitorwindow50" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TrainingMonitor(window=50)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#logreward-length-entropynone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        log(reward, length, entropy=None)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        plot()
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Attributes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#standalone-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Standalone usage
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -721,6 +677,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#randompolicy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RandomPolicy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RandomPolicy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#constructor" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -733,10 +701,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#trainingmonitorwindow50" class="md-nav__link">
+  <a href="#randompolicyn_actions-int" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TrainingMonitor(window=50)
+        RandomPolicy(n_actions: int)
       
     </span>
   </a>
@@ -747,65 +715,9 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#logreward-length-entropynone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        log(reward, length, entropy=None)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        plot()
-      
-    </span>
-  </a>
-  
-</li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Attributes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#standalone-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Standalone usage
-      
-    </span>
-  </a>
   
 </li>
       
@@ -829,73 +741,24 @@
   
 
 
-<h1 id="trainingmonitor">TrainingMonitor</h1>
-<p>Logs episode statistics and plots training curves. Automatically used by <code>Runner</code>, but can also be used standalone.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">TrainingMonitor</span>
+<h1 id="algorithms">Algorithms</h1>
+<p>Built-in policy implementations.</p>
+<h2 id="randompolicy">RandomPolicy</h2>
+<p>Uniform random policy over discrete actions.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridWorld</span><span class="p">,</span> <span class="n">Runner</span><span class="p">,</span> <span class="n">RandomPolicy</span>
 
-<span class="n">monitor</span> <span class="o">=</span> <span class="n">TrainingMonitor</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">GridWorld</span><span class="p">()</span>
+<span class="n">policy</span> <span class="o">=</span> <span class="n">RandomPolicy</span><span class="p">(</span><span class="n">n_actions</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">n_actions</span><span class="p">)</span>
+<span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="constructor">Constructor</h2>
-<h3 id="trainingmonitorwindow50"><code>TrainingMonitor(window=50)</code></h3>
+<h3 id="constructor">Constructor</h3>
+<h4 id="randompolicyn_actions-int"><code>RandomPolicy(n_actions: int)</code></h4>
 <p><strong>Args:</strong></p>
 <ul>
-<li><code>window</code> — rolling average window size for smoothing plots</li>
+<li><code>n_actions</code> — number of discrete actions to sample from uniformly</li>
 </ul>
-<h2 id="methods">Methods</h2>
-<h3 id="logreward-length-entropynone"><code>log(reward, length, entropy=None)</code></h3>
-<p>Record one episode's statistics.</p>
-<p><strong>Args:</strong></p>
-<ul>
-<li><code>reward</code> — total episode reward</li>
-<li><code>length</code> — number of steps in the episode</li>
-<li><code>entropy</code> — mean policy entropy over the episode (optional)</li>
-</ul>
-<h3 id="plot"><code>plot()</code></h3>
-<p>Display training curves side by side:</p>
-<ol>
-<li><strong>Episode Reward</strong></li>
-<li><strong>Episode Length</strong></li>
-<li><strong>Policy Entropy</strong> — only shown if entropy data was logged</li>
-</ol>
-<p>Each plot shows the raw data (transparent) and a rolling average (solid line).</p>
-<h2 id="attributes">Attributes</h2>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>rewards</code></td>
-<td><code>list[float]</code></td>
-<td>All logged episode rewards</td>
-</tr>
-<tr>
-<td><code>lengths</code></td>
-<td><code>list[int]</code></td>
-<td>All logged episode lengths</td>
-</tr>
-<tr>
-<td><code>entropies</code></td>
-<td><code>list[float]</code></td>
-<td>Logged mean entropies (only for episodes that provided entropy)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="standalone-usage">Standalone usage</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">TrainingMonitor</span>
-
-<span class="n">monitor</span> <span class="o">=</span> <span class="n">TrainingMonitor</span><span class="p">()</span>
-
-<span class="k">for</span> <span class="n">episode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>
-    <span class="c1"># ... your training loop ...</span>
-    <span class="n">monitor</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">total_reward</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">entropy</span><span class="p">)</span>  <span class="c1"># entropy is optional</span>
-
-<span class="n">monitor</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</code></pre></div>
 
 
 

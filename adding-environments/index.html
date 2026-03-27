@@ -359,6 +359,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../api/policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api/gridworld/" class="md-nav__link">
         
   
@@ -367,6 +423,34 @@
     
   
     GridWorld
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithms
   
 
     
@@ -639,7 +723,8 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">MyEnv</span><span class="p">(</span><span class="n">Environment</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state_dim</span> <span class="o">=</span> <span class="mi">4</span>        <span class="c1"># observation dimensionality</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n_actions</span> <span class="o">=</span> <span class="mi">2</span>        <span class="c1"># number of discrete actions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_actions</span> <span class="o">=</span> <span class="mi">2</span>        <span class="c1"># for discrete action spaces</span>
+        <span class="c1"># self.action_dim = 3     # for continuous action spaces</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_steps</span> <span class="o">=</span> <span class="mi">200</span>      <span class="c1"># episode step limit</span>
         <span class="c1"># ... your state variables ...</span>
 
@@ -649,7 +734,7 @@
         <span class="c1"># ... reset your state ...</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_obs</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Take action, return (observation, reward, done).&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="c1"># ... apply action, compute reward ...</span>
@@ -667,7 +752,8 @@
 </code></pre></div>
 <h2 id="checklist">Checklist</h2>
 <ol>
-<li>Set <code>state_dim</code>, <code>n_actions</code>, and <code>max_steps</code> in <code>__init__</code></li>
+<li>Set <code>state_dim</code> and <code>max_steps</code> in <code>__init__</code></li>
+<li>Set <code>n_actions</code> (discrete) or <code>action_dim</code> (continuous)</li>
 <li><code>reset()</code> returns the initial observation and resets all state</li>
 <li><code>step()</code> returns <code>(obs, reward, done)</code> — make sure <code>done=True</code> when the episode should end</li>
 <li><code>_get_obs()</code> returns a numpy array with shape <code>(state_dim,)</code></li>
@@ -679,7 +765,8 @@
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">MyEnv</span><span class="p">()</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-<span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">my_policy</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">my_policy</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">runner</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div>
 

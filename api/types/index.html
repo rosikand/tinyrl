@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://rosikand.github.io/tinyrl/api/monitor/">
+        <link rel="canonical" href="https://rosikand.github.io/tinyrl/api/types/">
       
       
-        <link rel="prev" href="../runner/">
+        <link rel="prev" href="../policy/">
       
       
-        <link rel="next" href="../../adding-environments/">
+        <link rel="next" href="../gridworld/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>TrainingMonitor - tinyrl</title>
+        <title>Types - tinyrl</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#trainingmonitor" class="md-skip">
+        <a href="#types" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TrainingMonitor
+              Types
             
           </span>
         </div>
@@ -388,10 +388,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../types/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Types
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -407,6 +434,87 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#policyoutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PolicyOutput
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trajectory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trajectory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trajectory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batched-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Batched properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#episoderesult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpisodeResult
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -500,37 +608,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TrainingMonitor
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../monitor/" class="md-nav__link">
         
   
   
@@ -546,115 +627,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#constructor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Constructor
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#trainingmonitorwindow50" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TrainingMonitor(window=50)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#logreward-length-entropynone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        log(reward, length, entropy=None)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        plot()
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Attributes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#standalone-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Standalone usage
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -721,22 +693,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#constructor" class="md-nav__link">
+  <a href="#policyoutput" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Constructor
+        PolicyOutput
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Constructor">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trajectory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trajectory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trajectory">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#trainingmonitorwindow50" class="md-nav__link">
+  <a href="#batched-properties" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TrainingMonitor(window=50)
+        Batched properties
       
     </span>
   </a>
@@ -749,60 +743,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
+  <a href="#episoderesult" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#logreward-length-entropynone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        log(reward, length, entropy=None)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        plot()
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Attributes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#standalone-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Standalone usage
+        EpisodeResult
       
     </span>
   </a>
@@ -829,73 +773,179 @@
   
 
 
-<h1 id="trainingmonitor">TrainingMonitor</h1>
-<p>Logs episode statistics and plots training curves. Automatically used by <code>Runner</code>, but can also be used standalone.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">TrainingMonitor</span>
+<h1 id="types">Types</h1>
+<p>Data classes used throughout tinyrl.</p>
+<h2 id="policyoutput">PolicyOutput</h2>
+<p>Structured return type for policy functions.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolicyOutput</span>
 
-<span class="n">monitor</span> <span class="o">=</span> <span class="n">TrainingMonitor</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="c1"># just an action</span>
+<span class="n">PolicyOutput</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># with training info</span>
+<span class="n">PolicyOutput</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">logprob</span><span class="o">=-</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="constructor">Constructor</h2>
-<h3 id="trainingmonitorwindow50"><code>TrainingMonitor(window=50)</code></h3>
-<p><strong>Args:</strong></p>
-<ul>
-<li><code>window</code> — rolling average window size for smoothing plots</li>
-</ul>
-<h2 id="methods">Methods</h2>
-<h3 id="logreward-length-entropynone"><code>log(reward, length, entropy=None)</code></h3>
-<p>Record one episode's statistics.</p>
-<p><strong>Args:</strong></p>
-<ul>
-<li><code>reward</code> — total episode reward</li>
-<li><code>length</code> — number of steps in the episode</li>
-<li><code>entropy</code> — mean policy entropy over the episode (optional)</li>
-</ul>
-<h3 id="plot"><code>plot()</code></h3>
-<p>Display training curves side by side:</p>
-<ol>
-<li><strong>Episode Reward</strong></li>
-<li><strong>Episode Length</strong></li>
-<li><strong>Policy Entropy</strong> — only shown if entropy data was logged</li>
-</ol>
-<p>Each plot shows the raw data (transparent) and a rolling average (solid line).</p>
-<h2 id="attributes">Attributes</h2>
 <table>
 <thead>
 <tr>
-<th>Attribute</th>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>action</code></td>
+<td><code>int \| np.ndarray</code></td>
+<td>required</td>
+<td>The action to take</td>
+</tr>
+<tr>
+<td><code>logprob</code></td>
+<td><code>float \| None</code></td>
+<td><code>None</code></td>
+<td>Log-probability of the action</td>
+</tr>
+<tr>
+<td><code>entropy</code></td>
+<td><code>float \| None</code></td>
+<td><code>None</code></td>
+<td>Entropy of the policy distribution</td>
+</tr>
+</tbody>
+</table>
+<h2 id="step">Step</h2>
+<p>A single environment transition, stored in trajectories.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>obs</code></td>
+<td><code>np.ndarray</code></td>
+<td>required</td>
+<td>Observation before the action</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td><code>int \| np.ndarray</code></td>
+<td>required</td>
+<td>Action taken</td>
+</tr>
+<tr>
+<td><code>reward</code></td>
+<td><code>float</code></td>
+<td>required</td>
+<td>Reward received</td>
+</tr>
+<tr>
+<td><code>next_obs</code></td>
+<td><code>np.ndarray</code></td>
+<td>required</td>
+<td>Observation after the action</td>
+</tr>
+<tr>
+<td><code>done</code></td>
+<td><code>bool</code></td>
+<td>required</td>
+<td>Whether the episode ended</td>
+</tr>
+<tr>
+<td><code>logprob</code></td>
+<td><code>float \| None</code></td>
+<td><code>None</code></td>
+<td>Log-probability (if policy provided it)</td>
+</tr>
+<tr>
+<td><code>entropy</code></td>
+<td><code>float \| None</code></td>
+<td><code>None</code></td>
+<td>Entropy (if policy provided it)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="trajectory">Trajectory</h2>
+<p>A full episode trajectory. Supports indexing, iteration, and batched property access.</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">return_trajectory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">traj</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">trajectory</span>
+
+<span class="n">traj</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="c1"># first Step</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>          <span class="c1"># number of steps</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">traj</span><span class="p">:</span>  <span class="c1"># iterate</span>
+    <span class="o">...</span>
+</code></pre></div>
+<h3 id="batched-properties">Batched properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Shape</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>traj.obs</code></td>
+<td><code>(length, state_dim)</code></td>
+<td>All observations</td>
+</tr>
+<tr>
+<td><code>traj.actions</code></td>
+<td><code>(length,)</code> or <code>(length, action_dim)</code></td>
+<td>All actions</td>
+</tr>
+<tr>
+<td><code>traj.rewards</code></td>
+<td><code>(length,)</code></td>
+<td>All rewards</td>
+</tr>
+<tr>
+<td><code>traj.logprobs</code></td>
+<td><code>(length,)</code> or <code>None</code></td>
+<td>All log-probs (if provided)</td>
+</tr>
+<tr>
+<td><code>traj.entropies</code></td>
+<td><code>(length,)</code> or <code>None</code></td>
+<td>All entropies (if provided)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="episoderesult">EpisodeResult</h2>
+<p>Return type for <code>Runner.run_episode()</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>rewards</code></td>
-<td><code>list[float]</code></td>
-<td>All logged episode rewards</td>
+<td><code>reward</code></td>
+<td><code>float</code></td>
+<td>Total episode reward</td>
 </tr>
 <tr>
-<td><code>lengths</code></td>
-<td><code>list[int]</code></td>
-<td>All logged episode lengths</td>
+<td><code>steps</code></td>
+<td><code>int</code></td>
+<td>Number of steps taken</td>
 </tr>
 <tr>
-<td><code>entropies</code></td>
-<td><code>list[float]</code></td>
-<td>Logged mean entropies (only for episodes that provided entropy)</td>
+<td><code>trajectory</code></td>
+<td><code>Trajectory \| None</code></td>
+<td>Full trajectory (if <code>return_trajectory=True</code>)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="standalone-usage">Standalone usage</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">TrainingMonitor</span>
-
-<span class="n">monitor</span> <span class="o">=</span> <span class="n">TrainingMonitor</span><span class="p">()</span>
-
-<span class="k">for</span> <span class="n">episode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>
-    <span class="c1"># ... your training loop ...</span>
-    <span class="n">monitor</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">total_reward</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">entropy</span><span class="p">)</span>  <span class="c1"># entropy is optional</span>
-
-<span class="n">monitor</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</code></pre></div>
 
 
 

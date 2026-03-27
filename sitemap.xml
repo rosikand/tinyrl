@@ -13,6 +13,10 @@
          <lastmod>2026-03-27</lastmod>
     </url>
     <url>
+         <loc>https://rosikand.github.io/tinyrl/api/algorithms/</loc>
+         <lastmod>2026-03-27</lastmod>
+    </url>
+    <url>
          <loc>https://rosikand.github.io/tinyrl/api/environment/</loc>
          <lastmod>2026-03-27</lastmod>
     </url>
@@ -25,7 +29,15 @@
          <lastmod>2026-03-27</lastmod>
     </url>
     <url>
+         <loc>https://rosikand.github.io/tinyrl/api/policy/</loc>
+         <lastmod>2026-03-27</lastmod>
+    </url>
+    <url>
          <loc>https://rosikand.github.io/tinyrl/api/runner/</loc>
+         <lastmod>2026-03-27</lastmod>
+    </url>
+    <url>
+         <loc>https://rosikand.github.io/tinyrl/api/types/</loc>
          <lastmod>2026-03-27</lastmod>
     </url>
 </urlset>

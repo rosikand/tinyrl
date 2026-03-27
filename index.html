@@ -311,6 +311,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#package-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package structure
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -428,6 +439,62 @@
   
   
     <li class="md-nav__item">
+      <a href="api/policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="api/gridworld/" class="md-nav__link">
         
   
@@ -436,6 +503,34 @@
     
   
     GridWorld
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithms
   
 
     
@@ -587,6 +682,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#package-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package structure
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -613,22 +719,28 @@
 <ul>
 <li><strong>Simple</strong> — small codebase, easy to read and modify</li>
 <li><strong>From scratch</strong> — no dependency on OpenAI Gym or Gymnasium</li>
-<li><strong>Extensible</strong> — add new environments by subclassing <code>Environment</code></li>
+<li><strong>Extensible</strong> — add new environments by subclassing <code>Environment</code>, new policies by subclassing <code>Policy</code></li>
 <li><strong>Batteries included</strong> — comes with a <code>Runner</code> for rolling out episodes and a <code>TrainingMonitor</code> for plotting training curves</li>
 </ul>
 <h2 id="quick-example">Quick example</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridWorld</span><span class="p">,</span> <span class="n">Runner</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridWorld</span><span class="p">,</span> <span class="n">Runner</span><span class="p">,</span> <span class="n">RandomPolicy</span>
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">GridWorld</span><span class="p">()</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+<span class="n">policy</span> <span class="o">=</span> <span class="n">RandomPolicy</span><span class="p">(</span><span class="n">n_actions</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">n_actions</span><span class="p">)</span>
 
-<span class="c1"># run 100 episodes with a random policy</span>
+<span class="c1"># run 100 episodes</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-    <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="k">lambda</span> <span class="n">obs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">n_actions</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
 
-<span class="c1"># plot reward, episode length, and entropy curves</span>
+<span class="c1"># plot reward and episode length curves</span>
 <span class="n">runner</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="package-structure">Package structure</h2>
+<div class="highlight"><pre><span></span><code>tinyrl/
+  core/          # Environment, Policy, Runner, TrainingMonitor, types
+  envs/          # GridWorld, ...
+  algorithms/    # RandomPolicy, ...
 </code></pre></div>
 
 

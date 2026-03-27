@@ -362,6 +362,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#episoderesult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpisodeResult
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trajectories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trajectories
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eval-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eval mode
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -452,6 +485,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../api/policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api/gridworld/" class="md-nav__link">
         
   
@@ -460,6 +549,34 @@
     
   
     GridWorld
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithms
   
 
     
@@ -633,6 +750,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#episoderesult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EpisodeResult
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trajectories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trajectories
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eval-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eval mode
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -663,43 +813,82 @@
 pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </code></pre></div>
 <h2 id="your-first-episode">Your first episode</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridWorld</span><span class="p">,</span> <span class="n">Runner</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridWorld</span><span class="p">,</span> <span class="n">Runner</span><span class="p">,</span> <span class="n">RandomPolicy</span>
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">GridWorld</span><span class="p">()</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-
-<span class="c1"># random policy: pick a random action each step</span>
-<span class="n">random_policy</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">obs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">n_actions</span><span class="p">)</span>
+<span class="n">policy</span> <span class="o">=</span> <span class="n">RandomPolicy</span><span class="p">(</span><span class="n">n_actions</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">n_actions</span><span class="p">)</span>
 
 <span class="c1"># run and visualize one episode</span>
-<span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">random_policy</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reward: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">reward</span><span class="si">}</span><span class="s2">, Steps: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">steps</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="training-loop">Training loop</h2>
 <p>A typical training loop looks like this:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridWorld</span><span class="p">,</span> <span class="n">Runner</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">GridWorld</span><span class="p">()</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">episode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>
     <span class="c1"># replace with your learned policy</span>
-    <span class="n">policy</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">obs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">n_actions</span><span class="p">)</span>
-    <span class="n">reward</span><span class="p">,</span> <span class="n">steps</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">my_policy</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">episode</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Episode </span><span class="si">{</span><span class="n">episode</span><span class="si">}</span><span class="s2">: reward=</span><span class="si">{</span><span class="n">reward</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">, steps=</span><span class="si">{</span><span class="n">steps</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Episode </span><span class="si">{</span><span class="n">episode</span><span class="si">}</span><span class="s2">: reward=</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">reward</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">, steps=</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">steps</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">runner</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div>
-<p>The <code>Runner</code> automatically logs reward, episode length, and policy entropy to its internal <code>TrainingMonitor</code>. Call <code>runner.plot()</code> at any point to see training curves.</p>
+<p>The <code>Runner</code> automatically logs reward, episode length, and policy entropy (if provided) to its internal <code>TrainingMonitor</code>. Call <code>runner.plot()</code> at any point to see training curves.</p>
 <h2 id="policy-function">Policy function</h2>
-<p>The <code>policy_fn</code> passed to <code>run_episode</code> can return either:</p>
+<p>The <code>policy_fn</code> passed to <code>run_episode</code> can be:</p>
 <ul>
-<li><strong>just an action</strong>: <code>obs -&gt; int</code></li>
-<li><strong>action and entropy</strong>: <code>obs -&gt; (int, float)</code> — useful for tracking how the policy distribution changes during training</li>
+<li>
+<p><strong>A plain callable</strong> returning an <code>int</code> (discrete) or <code>np.ndarray</code> (continuous):
+  <div class="highlight"><pre><span></span><code><span class="k">lambda</span> <span class="n">obs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>A callable returning <code>PolicyOutput</code></strong> with optional logprob and entropy:
+  <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolicyOutput</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_policy</span><span class="p">(</span><span class="n">obs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">PolicyOutput</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">logprob</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>A <code>Policy</code> subclass</strong> for structured, reusable policies:
+  <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tinyrl</span><span class="w"> </span><span class="kn">import</span> <span class="n">Policy</span><span class="p">,</span> <span class="n">PolicyOutput</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyPolicy</span><span class="p">(</span><span class="n">Policy</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PolicyOutput</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
 </ul>
+<h2 id="episoderesult">EpisodeResult</h2>
+<p><code>run_episode</code> always returns an <code>EpisodeResult</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">reward</span>       <span class="c1"># total episode reward</span>
+<span class="n">result</span><span class="o">.</span><span class="n">steps</span>        <span class="c1"># number of steps taken</span>
+<span class="n">result</span><span class="o">.</span><span class="n">trajectory</span>   <span class="c1"># None unless return_trajectory=True</span>
+</code></pre></div>
+<h2 id="trajectories">Trajectories</h2>
+<p>Request the full trajectory to inspect or use for training:</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">return_trajectory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">traj</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">trajectory</span>
+
+<span class="n">traj</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">obs</span>          <span class="c1"># first step observation</span>
+<span class="n">traj</span><span class="o">.</span><span class="n">obs</span>             <span class="c1"># batched obs array, shape (steps, state_dim)</span>
+<span class="n">traj</span><span class="o">.</span><span class="n">actions</span>         <span class="c1"># batched actions</span>
+<span class="n">traj</span><span class="o">.</span><span class="n">rewards</span>         <span class="c1"># batched rewards</span>
+<span class="n">traj</span><span class="o">.</span><span class="n">logprobs</span>        <span class="c1"># batched logprobs (None if not provided)</span>
+<span class="n">traj</span><span class="o">.</span><span class="n">entropies</span>       <span class="c1"># batched entropies (None if not provided)</span>
+</code></pre></div>
+<h2 id="eval-mode">Eval mode</h2>
+<p>Run episodes without logging to the monitor:</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
 
 
 

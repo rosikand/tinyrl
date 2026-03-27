@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://rosikand.github.io/tinyrl/api/runner/">
       
       
-        <link rel="prev" href="../gridworld/">
+        <link rel="prev" href="../algorithms/">
       
       
         <link rel="next" href="../monitor/">
@@ -363,6 +363,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../gridworld/" class="md-nav__link">
         
   
@@ -371,6 +427,34 @@
     
   
     GridWorld
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithms
   
 
     
@@ -491,10 +575,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#run_episodepolicy_fn-visualizefalse-delay01" class="md-nav__link">
+  <a href="#run_episodepolicy_fn-visualizefalse-delay01-logtrue-return_trajectoryfalse" class="md-nav__link">
     <span class="md-ellipsis">
       
-        run_episode(policy_fn, visualize=False, delay=0.1)
+        run_episode(policy_fn, visualize=False, delay=0.1, log=True, return_trajectory=False)
       
     </span>
   </a>
@@ -655,10 +739,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#run_episodepolicy_fn-visualizefalse-delay01" class="md-nav__link">
+  <a href="#run_episodepolicy_fn-visualizefalse-delay01-logtrue-return_trajectoryfalse" class="md-nav__link">
     <span class="md-ellipsis">
       
-        run_episode(policy_fn, visualize=False, delay=0.1)
+        run_episode(policy_fn, visualize=False, delay=0.1, log=True, return_trajectory=False)
       
     </span>
   </a>
@@ -716,31 +800,33 @@
 <li><code>monitor</code> — a <code>TrainingMonitor</code> instance. If <code>None</code>, a default one is created automatically.</li>
 </ul>
 <h2 id="methods">Methods</h2>
-<h3 id="run_episodepolicy_fn-visualizefalse-delay01"><code>run_episode(policy_fn, visualize=False, delay=0.1)</code></h3>
+<h3 id="run_episodepolicy_fn-visualizefalse-delay01-logtrue-return_trajectoryfalse"><code>run_episode(policy_fn, visualize=False, delay=0.1, log=True, return_trajectory=False)</code></h3>
 <p>Roll out a single episode.</p>
 <p><strong>Args:</strong></p>
 <ul>
 <li><code>policy_fn</code> — a callable that takes an observation and returns either:<ul>
-<li><code>action</code> (int) — the action to take</li>
-<li><code>(action, entropy)</code> (tuple) — action plus the entropy of the policy distribution, for tracking</li>
+<li><code>int</code> or <code>np.ndarray</code> — the action to take</li>
+<li><code>PolicyOutput</code> — action plus optional logprob and entropy</li>
 </ul>
 </li>
 <li><code>visualize</code> — if <code>True</code>, calls <code>env.render()</code> at each step</li>
 <li><code>delay</code> — seconds between frames when visualizing</li>
+<li><code>log</code> — if <code>True</code>, logs stats to the monitor. Set <code>False</code> for eval runs.</li>
+<li><code>return_trajectory</code> — if <code>True</code>, populates <code>result.trajectory</code></li>
 </ul>
-<p><strong>Returns:</strong> <code>(total_reward, steps)</code></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># simple policy</span>
-<span class="n">reward</span><span class="p">,</span> <span class="n">steps</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="k">lambda</span> <span class="n">obs</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># always go right</span>
+<p><strong>Returns:</strong> <code>EpisodeResult</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># basic</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">reward</span>       <span class="c1"># total reward</span>
+<span class="n">result</span><span class="o">.</span><span class="n">steps</span>        <span class="c1"># number of steps</span>
 
-<span class="c1"># policy that reports entropy</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">my_policy</span><span class="p">(</span><span class="n">obs</span><span class="p">):</span>
-    <span class="n">action</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
-    <span class="n">entropy</span> <span class="o">=</span> <span class="n">compute_entropy</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">action</span><span class="p">,</span> <span class="n">entropy</span>
+<span class="c1"># with trajectory</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">return_trajectory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">trajectory</span>   <span class="c1"># Trajectory object</span>
 
-<span class="n">reward</span><span class="p">,</span> <span class="n">steps</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">my_policy</span><span class="p">)</span>
+<span class="c1"># eval (no logging)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_episode</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<p>If the policy function doesn't return entropy, the runner assumes a uniform distribution (<code>ln(n_actions)</code>).</p>
 <h3 id="plot"><code>plot()</code></h3>
 <p>Calls <code>self.monitor.plot()</code> to display training curves.</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>

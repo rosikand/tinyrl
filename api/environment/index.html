@@ -16,7 +16,7 @@
         <link rel="prev" href="../../getting-started/">
       
       
-        <link rel="next" href="../gridworld/">
+        <link rel="next" href="../policy/">
       
       
         
@@ -429,10 +429,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#stepaction-int-tuplenpndarray-float-bool" class="md-nav__link">
+  <a href="#stepaction-int-npndarray-tuplenpndarray-float-bool" class="md-nav__link">
     <span class="md-ellipsis">
       
-        step(action: int) -&gt; tuple[np.ndarray, float, bool]
+        step(action: int | np.ndarray) -&gt; tuple[np.ndarray, float, bool]
       
     </span>
   </a>
@@ -451,10 +451,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#renderaction-int-none-none-step_num-int-0" class="md-nav__link">
+  <a href="#renderactionnone-step_num0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        render(action: int | None = None, step_num: int = 0)
+        render(action=None, step_num=0)
       
     </span>
   </a>
@@ -482,6 +482,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../gridworld/" class="md-nav__link">
         
   
@@ -490,6 +546,34 @@
     
   
     GridWorld
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithms
   
 
     
@@ -654,10 +738,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#stepaction-int-tuplenpndarray-float-bool" class="md-nav__link">
+  <a href="#stepaction-int-npndarray-tuplenpndarray-float-bool" class="md-nav__link">
     <span class="md-ellipsis">
       
-        step(action: int) -&gt; tuple[np.ndarray, float, bool]
+        step(action: int | np.ndarray) -&gt; tuple[np.ndarray, float, bool]
       
     </span>
   </a>
@@ -676,10 +760,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#renderaction-int-none-none-step_num-int-0" class="md-nav__link">
+  <a href="#renderactionnone-step_num0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        render(action: int | None = None, step_num: int = 0)
+        render(action=None, step_num=0)
       
     </span>
   </a>
@@ -730,8 +814,13 @@
 </tr>
 <tr>
 <td><code>n_actions</code></td>
-<td><code>int</code></td>
-<td>Number of discrete actions</td>
+<td><code>int \| None</code></td>
+<td>Number of discrete actions (for discrete envs)</td>
+</tr>
+<tr>
+<td><code>action_dim</code></td>
+<td><code>int \| None</code></td>
+<td>Dimensionality of the action vector (for continuous envs)</td>
 </tr>
 <tr>
 <td><code>max_steps</code></td>
@@ -740,17 +829,18 @@
 </tr>
 </tbody>
 </table>
+<p>Set <code>n_actions</code> for discrete action spaces, <code>action_dim</code> for continuous.</p>
 <h2 id="abstract-methods">Abstract methods</h2>
 <h3 id="reset-npndarray"><code>reset() -&gt; np.ndarray</code></h3>
 <p>Reset the environment to its initial state.</p>
 <p><strong>Returns:</strong> the initial observation as a numpy array.</p>
 <div class="highlight"><pre><span></span><code><span class="n">obs</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="stepaction-int-tuplenpndarray-float-bool"><code>step(action: int) -&gt; tuple[np.ndarray, float, bool]</code></h3>
+<h3 id="stepaction-int-npndarray-tuplenpndarray-float-bool"><code>step(action: int | np.ndarray) -&gt; tuple[np.ndarray, float, bool]</code></h3>
 <p>Take one step in the environment.</p>
 <p><strong>Args:</strong></p>
 <ul>
-<li><code>action</code> — integer index of the action to take</li>
+<li><code>action</code> — action index (int, discrete) or action vector (np.ndarray, continuous)</li>
 </ul>
 <p><strong>Returns:</strong> a tuple of <code>(observation, reward, done)</code></p>
 <ul>
@@ -762,7 +852,7 @@
 </code></pre></div>
 <h3 id="_get_obs-npndarray"><code>_get_obs() -&gt; np.ndarray</code></h3>
 <p>Return the current observation. Called internally by <code>reset()</code> and <code>step()</code>.</p>
-<h3 id="renderaction-int-none-none-step_num-int-0"><code>render(action: int | None = None, step_num: int = 0)</code></h3>
+<h3 id="renderactionnone-step_num0"><code>render(action=None, step_num=0)</code></h3>
 <p>Display the current state of the environment.</p>
 <p><strong>Args:</strong></p>
 <ul>
